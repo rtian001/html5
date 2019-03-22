@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const items = ["农夫", "狼", "羊", "菜"] //所有成员清单 常量
+			var start = "1111", //以左岸为例,初始状态
+				end = "0000", //终止状态
+				states, //所有状态,输出打印时用于求成员之间的变动
+				states_safe, //安全状态,排除安全隐患.用于规划路径
+				stack = [], //规划路径
+				Result = [], //最终路径:长度最短的合法路径
+				result_size; //合理规划路径的长度,只保存最短路径
+			states = new Map( //构造状态码及成员信息,map结构:key为状态码，value为成员.(将二维数组转换为map)
+				new Array(16).fill(0).map((n, i) => (s_key = (15-i).toString(2).padStart(4, "0"), //构造状态码数组
+						[s_key, [...s_key].map((n, i) => n * 1 && items[i]).filter(n => n != 0)]) //映射成员信息:二维数组
+				))
+			states_safe = new Map([...states].filter(([s_key, s_value]) => isSafe(s_value))) //从states筛选安全状态
+			function isSafe(s_item) { //安全状态检测函数：检测数组s_item的成员是否安全
+				let isHere = [...items].map(n => s_item.includes(n))
+				let unSafe1 = !isHere[0] && (isHere[2] && (isHere[1] || isHere[3])), //不安全1：农夫不时：狼和羊,羊和菜
+					unSafe2 = isHere[0] && (!isHere[2] && (!isHere[1] || !isHere[3])) //不安全2:农夫在时: 狼羊不在,羊菜不在
+				return !(unSafe1 || unSafe2) //排除两个不安全状态
+			}
+
+			function Move(s_key, L2R) { //农夫过河操作:s为左岸状态码,L2R为bool值:从左到右？从右到左
+				if (s_key == start) stack.push(start) //将初始状态加入路径
+				if (s_key == end) { //如果左岸状态码为终止状态,则记录合法路径
+					let Stack = [...stack] //记录当前合法路径
+					if (Result.length == 0) { //首次记录结果
+						Result.push(Stack)
+						result_size = Stack.length //首次合法路径长度
+					} else if (Stack.length < result_size) { //当前路径长度小于已存在的合法路径长度
+						result_size = Stack.length
+						Result = [Stack] //重置记录结果，保存最小长度的合法路径
+					} else if (Stack.length == result_size) {
+						Result.push(Stack)
+					}
+				}
+				if (L2R) { //从左到右
+					states_safe.forEach((sv, sk) => {
+						let r1 = !(sv.includes(items[0])), //不包含农夫：农夫必须离开
+							r2 = (sv.length == (states_safe.get(s_key).length - 2)), //从左到右每次减少2成员(农夫必须带物品走)
+							r3 = AhasB(s_key, sk), //剩余成员必须在未离开之前的成员中
+							r4 = !(stack.includes(sk)) //不重复状态:本次状态不在已规划状态路径中
+						if (r1 && r2 && r3 && r4) {
+							stack.push(sk) //将此状态添加到路径
+							Move(sk, false) //根据此状态进行从右到左操作
+							stack.pop() //回退，任务完成后清除已规划路径节点,以进行分支求解
+						}
+					})
+				} else { //从右到左
+					states_safe.forEach((sv, sk) => {
+						let r1 = sv.includes(items[0]), //农夫必须回去
+							r2 = AhasB(sk, s_key), //包含原有成员
+							r3 = !(stack.includes(sk)) //不重复状态:本次状态不在已规划状态路径中
+						if (r1 && r2 && r3) {
+							stack.push(sk) //将此状态添加到路径
+							Move(sk, true) //根据此状态进行从右到左操作
+							stack.pop() //任务完成后清除已规划路径节点,以进行分支求解
+						}
+					})
+				}
+
+				function AhasB(key_a, key_b) { //检测状态码,a是否包含b
+					return (parseInt(key_a, 2) & parseInt(key_b, 2)) == parseInt(key_b, 2)
+				}
+			} //==============农夫过河函数
+			Move(start, true)
+			Result.forEach((res,n)=>{
+				document.write("结果:",n+1,"<br>")
+				document.write(res,"<br>")
+			})
+		</script>
+	</body>
+</html>
