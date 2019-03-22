@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>页面布局：仿写学校官网首页</title>
+		<style type="text/css">
+			div{
+				background: rgba(255,0,0,0.3);
+			}
+			#header{
+				height: 100px;
+			}
+			#nav{
+				height: 40px;
+				margin: 5px auto;
+				text-align: center;
+			}
+			#main{
+				height: 900px;
+				width: 1200px;	
+				margin: 5px auto;
+			}
+			#footer{
+				height: 30px;
+			}
+			#news_photo{
+				height: 400px;
+			}
+			#news_list{
+				height: 400px;
+				margin: 5px auto;
+			}
+			#links{
+				height: 90px;
+			}
+			#photo{
+				height: 400px;
+				width: 900px;
+				float: left;
+			}
+			#nav_list{
+				height: 400px;
+				width: 280px;
+				margin-left: 920px;
+			}
+			.newslist{
+				width: 390px;
+				height: 400px;
+			}
+			#new1{
+				float: left;
+			}
+			#new2{
+				float: right;
+			}
+			#new3{
+				margin-left: 405px;
+			}
+			.navmenu{
+				display: inline-block;
+				width: 100px;
+				height: 40px;
+				background: #a00;
+				text-align: center;
+				line-height: 40px;
+				text-decoration: none;
+				color: #fff;
+				margin: 0 10px;
+				border-radius: 20px 0;
+				transition: all 0.5s ease;
+			}
+			.navmenu:hover{
+				background: #000;
+				border-radius: 5px;
+				font-size: 16pt;
+				font-weight: bold;
+				color: #fff;
+			}
+			#photo>img{
+				width: 900px;
+				height: 400px;
+			}
+			.navs{
+				background: rgba(0,0,0,.5);
+				height: 50px;
+				list-style: none;
+				margin: 5px;
+				line-height: 50px;
+				color: #fff;
+				font-size: 16pt;
+				padding-left:50px ;
+			}
+			#nav_list>ul{
+				list-style: none;
+				padding: 5px;
+			}
+			#header{
+				font:bold 48pt/100px '隶书';
+				color: #FFF;
+				padding:0 30px ;
+				text-shadow: 2px 2px 1px #f00,3px 3px 1px #369;
+			}
+			#news_list h3{
+				margin: 0;
+				height: 40px;
+				line-height: 40px;
+				border-bottom: 2px solid #555;
+				
+			}
+			#news_list h3>span{
+				display: inline-block;
+				padding:0 10px;
+				border-bottom: 3px solid #666;
+			}
+			#news_list ul{
+				margin: 0;
+				padding: 0;
+			}
+			.new1{
+				list-style: none;
+				height: 41px;
+				background: rgba(0,0,0,.3);
+				margin: 3px;
+				line-height: 41px;
+				color: #fff;
+				font-size: 12pt;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			.new2{
+				list-style: none;
+				height: 47px;
+				background: rgba(0,0,0,.3);
+				margin: 3px;
+			}
+			#pphoto1{
+				height: 250px ;
+			}
+			#pphoto1>img{
+				width: 390px;
+				height: 220px;
+			}
+			#pphoto2{
+				height: 100px;
+				margin-top: 8px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="header"> 
+			郑州财经学院
+		</div>
+		<div id="nav">
+			<a href="" class="navmenu">首页</a>
+			<a href="" class="navmenu">学校概况</a>
+			<a href="" class="navmenu">学校相册</a>
+			<a href="" class="navmenu">组织机构</a>
+			<a href="" class="navmenu">院部设置</a>
+			<a href="" class="navmenu">新闻资讯</a>
+			<a href="" class="navmenu">教育教学</a>
+			<a href="" class="navmenu">招生就业</a>
+		</div>
+		<div id="main">
+			<div id="news_photo">
+				<div id="photo">
+					<img src="0.jpg" >
+				</div>
+				<div id="nav_list">
+					<ul>
+						<li class="navs">招生信息网</li>
+						<li class="navs">学校校历</li>
+						<li class="navs">学校微博</li>
+						<li class="navs">学校微信</li>
+						<li class="navs">即时通讯</li>
+						<li class="navs">数字校园平台</li>
+						<li class="navs">教务管理系统</li>
+					</ul>
+				</div>
+			</div>
+			<div id="news_list">
+				<div id="new1" class="newslist">
+					<h3><span>学校要闻</span></h3>
+					<ul>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+						<li title="2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排" class="new1">2019-3-10 郑州财经学院信息工程学院计算机技能大赛日程安排</li>
+					</ul>
+				</div>
+				<div id="new2" class="newslist">
+					<h3><span>通告公告</span></h3>
+					<ul>
+						<li class="new2"></li>
+						<li class="new2"></li>
+						<li class="new2"></li>
+						<li class="new2"></li>
+						<li class="new2"></li>
+						<li class="new2"></li>
+						<li class="new2"></li>
+					</ul>
+				</div>
+				<div id="new3" class="newslist">
+					<h3><span>图片新闻</span></h3>
+					<div id="pphoto1">
+						<img src="2.jpg" >
+						<div id="pptitle">大学生记者团参观河南日报大数据资料库</div>
+					</div>
+					<div id="pphoto2">
+						
+					</div>
+				</div>
+			</div>
+			<div id="links"></div>
+		</div>
+		<div id="footer"></div>
+	</body>
+</html>

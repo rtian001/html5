@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#frame{
+				width: 400px;
+				height: 260px;
+				border: 2px solid #f00;
+				overflow: hidden;
+				position: relative;
+			}
+			.photos img{
+				width: 400px;
+				height: 260px;
+			}
+			.photos{
+				width: 400px;
+				height: 260px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform-origin: 400px 0;
+				transform: scale(0,1);
+			}
+			#photo1{
+				animation: am01 10s ease  infinite;
+			}
+			#photo2{
+				animation: am02 10s ease  infinite;
+			}
+			#photo3{
+				animation: am02 10s ease 2s  infinite;
+			}
+			#photo4{
+				animation: am02 10s ease 4s  infinite;
+			}
+			#photo5{
+				animation: am02 10s ease 6s  infinite;
+			}
+			@keyframes am01{
+				0%,15% {transform-origin:0 0;transform:scalex(1);}
+				20%,95%{transform-origin:0 0;transform:scalex(0);}
+				95%{transform-origin:400px 0;transform:scalex(0);}
+				100%{transform-origin:400px 0;transform:scalex(1);}
+			}
+			@keyframes am02{
+				0%,15% {transform-origin:400px 0;transform:scalex(0);}
+				20%,35% {transform-origin:400px 0;transform:scalex(1);}
+				35% {transform-origin:0 0;transform:scalex(1);}
+				40%,100%{transform-origin:0 0;transform:scalex(0);}
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+
+		
+		<div id="frame">
+			<div id="photo1" class="photos"><img src="../img/1.jpg" alt=""></div>
+			<div id="photo2" class="photos"><img src="../img/2.jpg" alt=""></div>
+			<div id="photo3" class="photos"><img src="../img/3.jpg" alt=""></div>
+			<div id="photo4" class="photos"><img src="../img/4.jpg" alt=""></div>
+			<div id="photo5" class="photos"><img src="../img/5.jpg" alt=""></div>
+		</div>
+	</body>
+</html>

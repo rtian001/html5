@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS3模拟时钟</title>
+		<style type="text/css">
+			#clock{
+				width: 600px;
+				height: 600px;
+				box-shadow: 0 0 10px 10px #666 ;
+				border-radius: 100%;
+				position: relative;
+			}
+			.kedu{
+				position: absolute;
+				width: 8px;
+				height: 560px;
+				border-top: 20px solid #666;
+				border-bottom: 20px solid #666;
+				left:296px;
+				
+			}
+			.kedu:before,.kedu:after{
+				position: absolute;
+				content: "";
+				display: block;
+				width: 8px;
+				height: 560px;
+				border-top: 20px solid #666;
+				border-bottom: 20px solid #666;
+				left:0;
+				top: -20px;
+				transform: rotate(6deg);
+			}
+			.kedu:after{
+				transform: rotate(12deg);
+			}
+			.kedu:nth-child(2){
+				transform: rotate(18deg);
+			}
+			.kedu:nth-child(3){
+				transform: rotate(36deg);
+			}
+			.kedu:nth-child(4){
+				transform: rotate(54deg);
+			}
+			.kedu:nth-child(5){
+				transform: rotate(72deg);
+			}
+			.kedu:nth-child(6){
+				transform: rotate(90deg);
+			}
+			.kedu:nth-child(7){
+				transform: rotate(108deg);
+			}
+			.kedu:nth-child(8){
+				transform: rotate(126deg);
+			}
+			.kedu:nth-child(9){
+				transform: rotate(144deg);
+			}
+			.kedu:nth-child(10){
+				transform: rotate(162deg);
+			}
+			#kedu1,#kedu6{
+				height: 540px;
+				border-top: 30px solid #000;
+				border-bottom: 30px solid #000;
+			}
+			#kedu1:after,#kedu1:before,#kedu6:before,#kedu6:after{
+				top:-30px;
+			}
+			#ss{
+				position: absolute;
+				width: 8px;
+				height: 280px;
+				background: #666;
+				left: 296px;
+				top: 60px;
+				transform-origin:4px 240px ;
+				transform: rotate(300deg);
+				animation: am01 30s linear infinite;
+			}
+			#mm{
+				position: absolute;
+				width: 10px;
+				height: 220px;
+				background: #666;
+				left: 295px;
+				top: 100px;
+				transform-origin:5px 200px ;
+				transform: rotate(45deg);
+			}
+			#hh{
+				position: absolute;
+				width: 12px;
+				height: 180px;
+				background: #666;
+				left: 294px;
+				top: 140px;
+				transform-origin:6px 160px ;
+				transform: rotate(180deg);
+			}
+			#dot{
+				width: 20px;
+				height: 20px;
+				border-radius: 100%;
+				background: #f00;
+				position: absolute;
+				left: 290px;
+				top:290px;
+				
+			}
+			@keyframes am01{
+				from{transform: rotate(0deg);}
+				to{transform: rotate(360deg);}
+			}
+			#flex_box{
+				display: flex;
+				flex-direction: column;
+				width: 800px;
+				height: 800px;
+				border: 1px solid #f00;
+			}
+			.fbox{
+				background: #666;
+				margin: 1px;
+			}
+			#box1{
+				flex: 1 0 500px;
+			}
+			#box2{
+				flex: 1 1 200px;
+			}
+			#box3{
+				flex: 1 1 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="clock">
+			<div id="kedu1" class="kedu"></div>
+			<div id="kedu2" class="kedu"></div>
+			<div id="kedu3" class="kedu"></div>
+			<div id="kedu4" class="kedu"></div>
+			<div id="kedu5" class="kedu"></div>
+			<div id="kedu6" class="kedu"></div>
+			<div id="kedu7" class="kedu"></div>
+			<div id="kedu8" class="kedu"></div>
+			<div id="kedu9" class="kedu"></div>
+			<div id="kedu10" class="kedu"></div>
+			<div id="ss"></div>
+			<div id="mm"></div>
+			<div id="hh"></div>
+			
+			<div id="dot"></div>
+		</div>
+		
+		<div id="flex_box">
+			<div id="box1" class="fbox"></div>
+			<div id="box2" class="fbox"></div>
+			<div id="box3" class="fbox"></div>
+		</div>
+	</body>
+		
+</html>

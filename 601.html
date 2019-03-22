@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS3--图片轮播</title>
+		<style type="text/css">
+			#frame{
+				width: 400px;
+				height: 260px;
+				border: 1px solid #f00;
+				overflow: hidden;
+				}
+				#photos{
+					width: 2000px;
+					height: 260px;
+					/* transform: translate(-1600px); */
+					animation: am001 10s ease infinite alternate;
+				}
+				#photos img{
+					width: 400px;
+					height: 260px;
+					float: left;
+				}
+				@keyframes am001{
+					/* from{transform: translate(0px);} */
+					/* to{transform: translate(-1600px);} */
+					
+					0%,15%{transform: translate(0px)}
+					20%,35%{transform: translate(-400px)}
+					40%,55%{transform: translate(-800px)}
+					60%,75%{transform: translate(-1200px)}
+					80%,100%{transform: translate(-1600px)}
+						
+					
+				}
+				
+				
+				
+		</style>
+	</head>
+	<body>
+		<div id="frame">
+			<div id="photos">
+				<img src="../img/1.jpg" alt="" class="phots">
+				<img src="../img/2.jpg" alt="" class="phots">
+				<img src="../img/3.jpg" alt="" class="phots">
+				<img src="../img/4.jpg" alt="" class="phots">
+				<img src="../img/5.jpg" alt="" class="phots">
+			</div>
+		</div>
+	</body>
+</html>

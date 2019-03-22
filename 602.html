@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#frame{
+				width: 400px;
+				height: 260px;
+				border: 2px solid #f00;
+				overflow: hidden;
+			}
+			#photos img{
+				width: 400px;
+				height: 260px;
+				float: left;
+			}
+			#photos{
+				width: 2000px;
+				animation: am001 10s ease infinite alternate;
+			}
+			
+			
+			@keyframes am001{
+				0%,16%{transform: translate(0);}
+				21%,37%{transform: translate(-400px);}
+				42%,58%{transform: translate(-800px);}
+				63%,79%{transform: translate(-1200px);}
+				84%,100%{transform: translate(-1600px);}
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<div id="frame">
+			<div id="photos">
+				<img src="../img/1.jpg" alt="" class="phots">
+				<img src="../img/2.jpg" alt="" class="phots">
+				<img src="../img/3.jpg" alt="" class="phots">
+				<img src="../img/4.jpg" alt="" class="phots">
+				<img src="../img/5.jpg" alt="" class="phots">
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

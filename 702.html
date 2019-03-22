@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Css3模拟时钟</title>
+		<style type="text/css">
+			#clock{
+				width: 400px;
+				height: 400px;
+				border-radius: 100%;
+				box-shadow: 0 0 10px 10px #666;
+				position: relative;
+			}
+			.kedu{
+				width: 8px;
+				height: 360px;
+				border-top: 20px solid #555;
+				border-bottom: 20px solid #555;
+				position: absolute;
+				left: 196px;
+			}
+			.kedu:before,.kedu:after{
+				content: "";
+				display: block;
+				width: 8px;
+				height: 360px;
+				border-top: 20px solid #555;
+				border-bottom: 20px solid #555;
+				position: absolute;
+				top: -20px;
+			}
+			.kedu:before{
+				transform: rotate(30deg);
+			}
+			.kedu:after{
+				transform: rotate(60deg);
+			}
+			
+			.kedu:nth-child(2){
+				transform: rotate(90deg);
+			}
+			#ss{
+				width: 6px;
+				height: 170px;
+				background: rgba(255,0,0,0.5);
+				position: absolute;
+				left: 197px;
+				top: 30px;
+				transform-origin:3px 170px ;
+				animation: am_ss 30s steps(60) infinite;
+			}
+			#mm{
+				width: 8px;
+				height: 140px;
+				background: rgba(255,0,255,0.5);
+				position: absolute;
+				left: 196px;
+				top: 60px;
+				transform-origin: 4px 140px;
+				animation: am_ss 40s steps(60) infinite;
+			}
+			#hh{
+				width: 10px;
+				height: 100px;
+				background: rgba(0,0,255,0.5);
+				position: absolute;
+				left: 195px;
+				top: 100px;
+				transform-origin: 5px 100px;
+				animation: am_ss 50s linear infinite;
+				
+			}
+			.kedu1{
+				width: 8px;
+				height: 384px;
+				border-top: 8px dotted #777;
+				border-bottom: 8px dotted #777;
+				position: absolute;
+				left: 196px;
+				transform: rotate(6deg);
+			}
+			.kedu1:before,.kedu1:after{
+				content: "";
+				display: block;
+				width: 8px;
+				height: 384px;
+				border-top: 8px dotted #777;
+				border-bottom: 8px dotted #777;
+				position: absolute;
+				top: -8px;
+				transform: rotate(30deg);
+			}
+			.kedu1:after{
+				transform: rotate(60deg);
+			}
+			.kedu1:nth-child(4){
+				transform: rotate(12deg);
+			}
+			.kedu1:nth-child(5){
+				transform: rotate(18deg);
+			}
+			.kedu1:nth-child(6){
+				transform: rotate(24deg);
+			}
+			.kedu1:nth-child(7){
+				transform: rotate(96deg);
+			}
+			.kedu1:nth-child(8){
+				transform: rotate(102deg);
+			}
+			.kedu1:nth-child(9){
+				transform: rotate(108deg);
+			}
+			.kedu1:nth-child(10){
+				transform: rotate(114deg);
+			}
+			
+			
+			@keyframes am_ss{
+				from{transform: rotate(0deg);}
+				to{transform: rotate(360deg);}
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="clock">
+			<div class="kedu"></div>
+			<div class="kedu"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			<div class="kedu1"></div>
+			
+			<div id="hh"></div>
+			<div id="mm"></div>
+			<div id="ss"></div>
+			
+		</div>
+		
+		
+		
+	</body>
+</html>
