@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算生日算法</title>
+		<style>
+			.demo{
+				width: 300px;
+			}
+			.demo fieldset{
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			.demo label{
+				display: block;
+				margin: 5px;
+			}
+			.demo .set2{
+				text-align: left;
+			}
+			.demo legend{
+				text-align:left;
+			}
+			.btn{
+				width: 100px;
+				height: 30px;
+				display: block;
+				margin: 15px auto;
+			}
+			.desc{
+				font:bold 10pt '';
+				color: #00f;
+			}
+			#code{
+				width: 300px;
+				overflow: hidden;
+				padding: 0;
+				margin: 0;
+				font:bold 12pt 'Consolas';
+				resize: none;
+				background: #ddd;
+				border: none;
+				color: #369;
+				margin: 10px auto;
+				padding: 10px 5px;
+				border-radius: 4px;
+				
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="demo">
+			<fieldset class="set1">
+				<legend>设置起止日期</legend>
+			<label>起始日期：<input type="date" id="date_start" value='2024-02-29'></label>
+			<label>结束日期：<input type="date" id="date_end" value='2025-02-28'></label>
+			</fieldset>
+			<button class="btn">计算日期差</button>
+			<fieldset class="set2">
+				<legend>日期差</legend>
+			<label>结果1：<input type="text" id="res1"></label>
+			<label>结果2：<input type="text" id="res2"></label>
+			<label>结果3：<input type="text" id="res3"></label>
+			</fieldset>
+			<div class="desc">
+				<!-- 注：闰年2-29至平年2-28，当天视为满1年。 -->
+			</div>
+			<textarea  id="code" rows="14"></textarea>
+		</div>
+		<script>
+			Date.prototype.diffFromDate = function(date) {
+				let date1 = this,date2 = date;
+				if (date1 > date2)[date1, date2] = [date2, date1];
+				let y1 = date1.getFullYear(),m1 = date1.getMonth(),d1 = date1.getDate();
+				let y2 = date2.getFullYear(),m2 = date2.getMonth(),d2 = date2.getDate();
+				let yy = 0,mm = 0,dd = 0;
+				let res={};
+				res._d={days:~~((date2-date1)/1000/60/60/24)};
+					let m2_d1=new Date(y1,2,0).getDate();
+					let m2_d2=new Date(y2,2,0).getDate();
+				/*闰年2-29至平年2-28，当天视为满1年。
+				if(m1==1&&m2==1 && d1==29 && d2==m2_d2){
+					yy=y2-y1;
+					res._yd={years:yy,days:0};
+					res._ymd={years:yy,months:0,days:0};
+					return res;
+				}
+				*/
+				{
+					let dt2=new Date(y2,m1,d1);
+					yy=y2-y1;
+					if(dt2>date2){
+						yy--;
+						dt2=new Date(y2-1,m1,d1);
+					}
+					let	days=~~((date2-dt2)/1000/60/60/24);
+					res._yd={years:yy,days:days};
+				}
+				{
+				if (d2 < d1) {
+					if(m1<2&&m2>1&&m2_d2>m2_d1)d2+=1;
+					if(m1<2&&m2>1&&m2_d2<m2_d1)d2-=1;
+					let dt1 = new Date(y1, m1 + 1, 0).getDate();
+					let dt2 = new Date(y2, m2, 0).getDate();
+					d2 += dt2,m2 -= 1;
+					if (dt2 < 30)d1 -= dt1,d2-=dt2;
+				}
+				if (m2 < m1) m2 += 12, y2 -= 1;
+				yy = y2 - y1, mm = m2 - m1, dd = d2 - d1;
+				res._ymd={years:yy,months:mm,days:dd};	
+			}		
+			return res;
+			};
+			//-------------------------------------
+			var btn=document.querySelector('.btn');
+			btn.addEventListener('click',getResult);
+			getResult();
+			function getResult(){
+					let date1,date2,res,res1,res2,res3;
+				try{
+					date1=new Date(document.querySelector('#date_start').value);
+					date2=new Date(document.querySelector('#date_end').value);
+					if(date1=='Invalid Date'||date2=='Invalid Date'){
+						let errstr=date1=='Invalid Date'?'date_start':'date_end';
+						res=res1=res2=res3='';
+						throw Error(errstr+' 日期格式有误！');
+					}else{
+						res=date1.diffFromDate(date2);
+						res1=res._d.days+' 天';
+						res2=res._yd.years+' 年零 '+res._yd.days+' 天';
+						res3=res._ymd.years+' 年零 '+res._ymd.months+' 月 '+res._ymd.days+' 天';
+					}
+					
+				}catch(err){
+					console.error(err);
+				}finally{
+				document.querySelector('#code').innerHTML=JSON.stringify(res,null,4);
+				document.querySelector('#res1').value=res1;
+				document.querySelector('#res2').value=res2;
+				document.querySelector('#res3').value=res3;
+					
+				}
+			}
+			
+
+		</script>
+	</body>
+</html>
