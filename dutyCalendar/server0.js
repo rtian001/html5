@@ -54,15 +54,15 @@ app.get('/getduty', (req, res) => {
             const dutyDate = dutyFormat['data'];
             for (let i = 0; i < rows.length; i++) {
                 const row = rows[i];
-                let telinfo = row['值班人员'].split(';').map(n => {
-                    // 脱密：打乱值班人员的电话
+                let telinfo = row['值班人员'].split(';')/*.map(n => {
+                    // 脱密：打乱值班人员的电话 #### 数据库已脱密，这里无需操作
                     let m = n.split(',');
                     let tel = m[1];
                     let newtel = '';
                     while ((newtel = tel.slice(0, 3) + tel.slice(3).split('').sort(() => Math.random() - 0.5).join(''), tel === newtel));
                     m[1] = newtel;
                     return m;
-                });
+                });*/
                 if (row['部门类型'].match(/带班校领导|处级干部/)) {
                     dutyDate[row['部门类型']] = telinfo;
                 } else {
