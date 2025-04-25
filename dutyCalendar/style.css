@@ -1,0 +1,312 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main {
+    width: 1200px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    min-width: 400px;
+}
+
+.container {
+    flex: 0 0 300px;
+    display: flex;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 100, 0.3);
+}
+
+#calendar {
+    min-width: 300px;
+    font-family: '楷体';
+}
+
+#calendar>.info {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Courier, monospace;
+}
+
+#month-year {
+    text-align: center;
+    margin: 0;
+    -webkit-user-select: none;
+}
+
+span.prev,
+span.next {
+    cursor: pointer;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+#calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 100, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#calendar th {
+    background-color: #f2f2f2;
+}
+
+#calendar th,
+#calendar td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#calendar td.cell {
+    background-color: rgba(200, 200, 250, 0.1);
+}
+
+#calendar td.duty-day {
+    background-color: #def;
+    cursor: pointer;
+    /* 高亮颜色 */
+}
+
+#calendar td.duty-day:hover {
+    background-color: #edc;
+    /* border: none; */
+}
+
+#calendar td.hidden {
+    display: none;
+}
+
+#calendar td.today {
+    background-color: rgba(100, 100, 250, 0.5);
+}
+
+
+span.desc {
+    /* font-style: italic; */
+    font-size: 12px;
+    color: #050;
+    vertical-align: super;
+}
+
+#duty-info-container {
+    flex: 1;
+    margin: 0 10px;
+    background-color: white;
+    padding: 20px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 100, 0.3);
+    overflow-y: scroll;
+}
+
+#duty-info-container>h2 {
+    margin: 0;
+    font-family: '仿宋';
+}
+
+div.duty-key {
+    height: 30px;
+    line-height: 30px;
+    font-family: '仿宋';
+}
+
+.duty-key1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.duty-key1+.duty-values {
+    color: #f63;
+}
+
+.duty-key2 {
+    font-size: 18px;
+    /* color: #36f; */
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 20px;
+}
+
+.duty-key2+div {
+    margin-left: 20px;
+}
+
+.duty-key3 {
+    font-size: 16px;
+    /* color: #69f; */
+    font-weight: bold;
+}
+
+.duty-value {
+    display: inline-block;
+    background-color: rgba(200, 200, 250, 0.3);
+    border-radius: 2px;
+    margin: 2px 5px;
+    padding: 0 5px;
+    width: 180px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.duty-value>span.name {
+    display: inline-block;
+    width: 60px;
+}
+
+.duty-items3 {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background: rgba(200, 200, 200, 0.1);
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 100, 0.2);
+}
+
+div.duty-item {
+    /* display: flex; */
+    margin: 10px 0;
+}
+
+div.duty-item.flex {
+    display: flex;
+
+}
+
+div.duty-item:not(.flex)>.duty-key1 {
+    border-top: 2px dashed #abc;
+}
+
+div.flex>.duty-key {
+    flex: 0 0 120px;
+    text-align: right;
+    line-height: 30px;
+    margin: 2px 0;
+}
+
+div.flex>div.duty-values {
+    flex: 1;
+    line-height: 30px;
+}
+
+.flex:hover {
+    background: rgba(200, 200, 250, 0.5);
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+div.duty-items1>.flex {
+    height: 50px;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 100, 0.2);
+}
+
+div.duty-items1>.flex>.duty-key1 {
+    line-height: 50px;
+    flex: 0 0 130px;
+    text-align: right;
+    padding-left: 5px;
+}
+
+div.duty-items1>.flex>.duty-key1:after {
+    content: "：";
+}
+
+
+div.duty-items1>.flex .duty-value {
+    line-height: 50px;
+    background: transparent;
+    font-weight: bold;
+}
+
+
+.showbody {
+    display: table-row-group !important;
+}
+
+.showtitle {
+    display: block !important;
+}
+
+.hidecalendar {
+    display: none !important;
+}
+
+/* ... existing code ... */
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+
+
+    #calendar {
+        width: 100%;
+    }
+
+    #month-year {
+        display: none;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        position: relative;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        text-align: center;
+    }
+
+    #calendar-head {
+        cursor: pointer;
+    }
+
+    #calendar-body {
+        display: none;
+    }
+
+
+    #main {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        flex: 0 0 30px;
+        margin: 10px;
+        /* overflow: hidden; */
+    }
+
+
+
+    .duty-key2+div {
+        margin-left: 0px;
+    }
+
+    .duty-key2 {
+        margin-left: 0px;
+        color: #69f;
+    }
+
+    .duty-key3 {
+        margin-left: 0px;
+    }
+
+    div.duty-item>div[class^="duty-key"] {
+        flex: 0 0 110px;
+    }
+}
+
+/* ... existing code ... */
