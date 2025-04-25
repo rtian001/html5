@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>值班情况一览表</title>
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./script-db.js"></script>
+    </head>
+
+    <body>
+        <div id="main">
+            <div class="container">
+                <div id="calendar">
+                    <h2 id="month-year"><span class="prev">◀</span><span class="yearmonth"></span><span
+                            class="next">▶</span></h2>
+                    <table>
+                        <thead id="calendar-head"></thead>
+                        <tbody id="calendar-body"></tbody>
+                    </table>
+                    <div class="info">注：电话号码已脱密[随机打乱]。</div>
+                </div>
+            </div>
+            <div id="duty-info-container"></div>
+        </div>
+    </body>
+
+</html>
