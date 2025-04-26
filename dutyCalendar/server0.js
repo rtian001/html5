@@ -81,6 +81,7 @@ app.get('/getdate', (req, res) => {
     let formattedDate = getdatestring(req);
     let ym = formattedDate.split('-').slice(0, 2).join('-');
     let dates = [];
+    //db.all(`SELECT 日期 FROM 值班表 WHERE 日期 like "${ym}%"`, (err, rows) => {
     db.all('SELECT 日期 FROM 值班表 WHERE 年月 = ?', [ym], (err, rows) => {
         if (err) {
             res.send(dates);
